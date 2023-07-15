@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
-import { TextInput, View, FlatList, Text } from 'react-native';
+import { TextInput, Pressable , View, FlatList, Text } from 'react-native';
 import { styles } from './styles';
 
-const ModalTextInput = () => {
-  const [treatment, setTreatment] = useState('Massage');
-  const [data, setData] = useState([]);
+const ModalTextInput = ({ dataList , recentData , getTreatment , ModalHandeler , recentExist}) => {
 
-  const dataList = [
-    { name: 'Nails' },
-    { name: 'Massage' },
-    { name: 'Hair' },
-    { name: 'Hair Removal' },
-    { name: 'Face' },
-    { name: 'Body' },
-    { name: 'For Men' },
-  ];
+
+  const [treatment, setTreatment] = useState('');
+  const [data, setData] = useState(dataList);
+  const [recentSearchs, setRecentSearch] = useState(recentData);
+
 
   const searchList = (text) => {
     const inputValue = text.toUpperCase();
@@ -27,11 +21,16 @@ const ModalTextInput = () => {
 
       setData(newData);
     } else {
-      setData([]);
+      setData(dataList);
     }
 
     setTreatment(text);
   };
+
+  const selectItem = (item) => {
+    getTreatment(item , recentExist)
+    ModalHandeler()
+  }
 
   const renderSeparator = () => (
     <View
@@ -47,20 +46,25 @@ const ModalTextInput = () => {
     <>
         <TextInput
         style={[styles.input, styles.modalInput]}
-        placeholder="Search For Treatments"
+        placeholder={recentExist}
         placeholderTextColor="rgb(185, 185, 185)"
         keyboardType="default"
         value={treatment}
         onChangeText={(text) => searchList(text)}
         autoFocus
         />
-        <View style={{
-          padding: 16
-        }}>
+       {recentExist === "Search For Treatments" && <View >
             <Text style={styles.modalHeader}>Recent Search</Text>
-            <Text>{treatment}</Text>
-            <Text style={styles.modalHeader}>Popular Search</Text>
-        </View>
+            <FlatList
+              data={recentSearchs}
+              renderItem={({ item }) => <Pressable onPress={() => selectItem(item.name)}>
+              <Text style={{ padding: 10 }}>{item.name}</Text>
+           </Pressable>}
+              keyExtractor={(item) => item.name}
+              ItemSeparatorComponent={renderSeparator}
+          />
+        </View>}
+        <Text style={styles.modalHeader}>Popular Search</Text>
     </>
 
   );
@@ -72,11 +76,14 @@ const ModalTextInput = () => {
         width: '100%',
         alignSelf: 'center',
         justifyContent: 'center',
+        padding: 16
       }}
     >
       <FlatList
         data={data}
-        renderItem={({ item }) => <Text style={{ padding: 10 }}>{item.name}</Text>}
+        renderItem={({ item }) => <Pressable onPress={() => selectItem(item.name)}>
+           <Text style={{ padding: 10 }}>{item.name}</Text>
+        </Pressable>}
         keyExtractor={(item) => item.name}
         ItemSeparatorComponent={renderSeparator}
         ListHeaderComponent={renderInput}

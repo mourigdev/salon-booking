@@ -3,8 +3,7 @@ import { Pressable ,  Modal , Text, View  } from 'react-native';
 import ModalTextInput from './ModalTextInput';
 import { styleModal } from "./Style.ModalView"
 
-const ModalView = ({modalVisible,ModalHandeler}) => {
-
+const ModalView = ({ modalVisible , ModalHandeler , dataList , recentData , recentExist , getTreatment}) => {
 
   return ( 
     <Modal
@@ -23,7 +22,7 @@ const ModalView = ({modalVisible,ModalHandeler}) => {
         </Pressable>
       </View>
       <View style={styleModal.TextInputParent}>
-      <ModalTextInput />
+      <ModalTextInput getTreatment={getTreatment} ModalHandeler={ModalHandeler} recentExist={recentExist}  dataList={dataList} recentData={recentData} />
       </View>
     </View>
   </Modal>

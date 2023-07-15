@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Search from './components/Search';
-import Home from './components/Home';
-import Book from './components/Book';
-import Profile from './components/Profile';
+import Search from './Routes/Search';
+import Home from './Routes/Home';
+import Book from './Routes/Book';
+import Profile from './Routes/Profile';
 
 const Stack = createNativeStackNavigator();
 

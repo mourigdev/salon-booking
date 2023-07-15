@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       marginTop: StatusBar.currentHeight || 10,
+      backgroundColor: '#ffffff'
     },
     tinyLogo: {
         width: 50,
@@ -18,10 +19,12 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       lineHeight: 24,
       outlineStyle: 'none',
+      flexDirection: "row",
+      alignItems: "center"
     },
     modalInput: {
       paddingBottom: '12px',
-      paddingLeft: 16,
+      // paddingLeft: 16,
       fontWeight: "bold",
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;',
       borderBottomWidth: 0.2,
@@ -74,5 +77,11 @@ export const styles = StyleSheet.create({
     },
     TextInputParent:{
       width:'100%',
-    }
+    },
+    btn: {
+      marginTop: 12
+    },
+    scrollView: {
+      backgroundColor: '#fff',
+    },
   })

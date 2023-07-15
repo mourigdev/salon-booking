@@ -1,9 +1,8 @@
 import React from 'react'
-import Header from './Header';
-import Logo from './Logo';
-import SearchI from './SearchI'
+import Header from '../components/Header';
+import Logo from '../components/Logo';
 import { SafeAreaView , Text } from 'react-native';
-import { styles } from "./styles"
+import { styles } from "../components/styles"
 
 
 
@@ -13,7 +12,6 @@ const Search = () => {
       <Logo />
       <Text>Welcome to the Search Screen</Text>
       <Header />
-      <SearchI />
     </SafeAreaView>
   )
 }
