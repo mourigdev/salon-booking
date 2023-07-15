@@ -1,12 +1,19 @@
 import React , { useState } from 'react'
+import { SafeAreaView , Pressable  , Text, View , TextInput } from 'react-native';
+import { styles } from "./styles"
+// Components
 import Header from './Header';
 import Logo from './Logo';
-import { SafeAreaView , Pressable ,  Modal , Text, View , TextInput } from 'react-native';
-import { styles } from "./styles"
+import ModalView from "./ModalView";
+
 
 
 const Home = () => {
+
   const [modalVisible, setModalVisible] = useState(false);
+  const ModalHandeler = () =>{
+    setModalVisible(!modalVisible)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,46 +25,14 @@ const Home = () => {
         <Pressable onPress={() => setModalVisible(true)}>
         <TextInput
           style={styles.input}
-          // onFocus={() => setModalVisible(true)}
           placeholder="Message"
           keyboardType="default"
         /></Pressable>
         </View>
       </View>
-      {/* modal */}
-
       <Header />
-
-
-      <Modal
-        style={[styles.centeredView,styles.modalback]}
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={[styles.centeredView,styles.modalback]}>
-          <View style={styles.closeParrent}>
-            <Pressable
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Close</Text>
-            </Pressable>
-          </View>
-          <View style={styles.TextInputParent}>
-          <TextInput
-          style={styles.input}
-          // onFocus={() => setModalVisible(true)}
-          placeholder="Message"
-          placeholderTextColor="rgb(175, 175, 175)"
-          keyboardType="default"
-        />
-          </View>
-        </View>
-      </Modal>
-
-
+      {/* modal */}
+      <ModalView modalVisible={modalVisible} ModalHandeler={ModalHandeler}/>
     </SafeAreaView>
   )
 }

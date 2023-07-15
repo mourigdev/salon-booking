@@ -1,24 +1,7 @@
 import {StyleSheet ,  StatusBar} from 'react-native'
 
-export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: StatusBar.currentHeight || 10,
-    },
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
-    input: {
-      height: '100%',
-      width: '100%',
-      flex: '1',
-      padding: 0,
-      color: '#4d4d4d',
-      fontSize: 16,
-      lineHeight: 24,
-      outlineStyle: 'none',
-    },
+export const styleModal = StyleSheet.create({
+
     modalInput: {
       paddingBottom: '12px',
       paddingLeft: 16,

@@ -1,4 +1,4 @@
-import { View , Image , TouchableOpacity } from 'react-native'
+import { View , Image ,Text, TouchableOpacity } from 'react-native'
 import {styles} from "./styles"
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,7 +17,7 @@ const Logo = () => {
             source={require('../assets/favicon.png')}
         />
         <TouchableOpacity style={{ color: "#ff5c39" , fontWeight: "bold" , fontFamily: "Arial" , fontSize: "14px" }} onPress={onPress}>
-            LOG IN
+            <Text>LOG IN</Text>
         </TouchableOpacity>
     </View>
   )
